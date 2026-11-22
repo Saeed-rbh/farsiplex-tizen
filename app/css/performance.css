@@ -1,0 +1,8 @@
+/* Fade an unchanged shadow layer instead of repainting its blur each frame. */
+.poster,.continue-tile .poster,.home-row .continue-tile .poster{transition:transform 200ms cubic-bezier(.22,.75,.25,1)}
+.tile{--poster-width:220px;--poster-height:330px;isolation:isolate}
+.tile:after{content:'';position:absolute;left:0;top:0;width:var(--poster-width);height:var(--poster-height);border-radius:14px;box-shadow:0 22px 44px #0008;pointer-events:none;opacity:0;transform:translateY(-4px) scale(1.025);transform-origin:center 55%;transition:opacity 200ms cubic-bezier(.22,.75,.25,1);z-index:-1}
+.tile.focus:after{opacity:1}.tile.focus .poster{box-shadow:0 12px 30px #0004}
+.tile.episode-tile{--poster-height:124px}.episode-grid .tile{--poster-width:344px;--poster-height:124px}
+.action,.secondary,.choice,.season-tab,#player-controls button,#player-options button,#tools button,.load-more,.episode{transition:transform 200ms cubic-bezier(.22,.75,.25,1),opacity 160ms}
+@media(prefers-reduced-motion:reduce){.tile:after{transition:none;transform:none}.poster,.action,.secondary,.choice,.season-tab,#player-controls button,#player-options button,#tools button,.load-more,.episode{transition:none!important}}
