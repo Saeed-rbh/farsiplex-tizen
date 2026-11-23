@@ -2,11 +2,11 @@
 
 An unofficial community app for browsing FarsiPlex on Samsung Smart TVs running Tizen 6.5 or later. Browse movies and series with the remote, search the catalog, follow shows, and resume playback. Catalog and playback availability depend on the upstream services.
 
-## Version 2.7.0
+## Version 2.7.1
 
-The updated interface uses shared blue gradient surfaces, compact popups, floating player controls, a selected-quality indicator, and a minimal logo without lettering. Exit confirmation focuses Cancel first. The release passed 23 browser regression programs on Chromium 85 and 13 production-screen checks, and was installed and launched on a Samsung QN55Q82BAFXZC. Browser playback checks use simulated Samsung APIs; installation and launch confirmation on the TV are recorded separately.
+Version 2.7.1 registers the minimal Samsung Home icon through a versioned launcher asset. Version 2.7.0 introduced the interface update, which uses shared blue gradient surfaces, compact popups, floating player controls, a selected-quality indicator, and a minimal logo without lettering. Exit confirmation focuses Cancel first. The release passed 23 browser regression programs on Chromium 85 and 13 production-screen checks, and was installed and launched on a Samsung QN55Q82BAFXZC. Browser playback checks use simulated Samsung APIs; installation and launch confirmation on the TV are recorded separately.
 
-[Download the release](https://github.com/Saeed-rbh/farsiplex-tizen/releases/tag/v2.7.0). The signed widget's acceptance on another TV depends on certificate authorization. The source-install steps below let you build with your own Samsung TV certificate.
+[Download the release](https://github.com/Saeed-rbh/farsiplex-tizen/releases/tag/v2.7.1). The signed widget's acceptance on another TV depends on certificate authorization. The source-install steps below let you build with your own Samsung TV certificate.
 
 ## Ask your AI assistant to install it
 
