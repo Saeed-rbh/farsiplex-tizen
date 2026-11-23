@@ -1,6 +1,6 @@
 # Install FarsiPlex with an AI assistant
 
-This guide is for an AI assistant helping someone install this repository's community app on their own Samsung Tizen TV. The app requires Tizen 6.5 or later. Version 2.7.0 was installed and launched on a Samsung QN55Q82BAFXZC. Catalog and playback availability depend on upstream providers.
+This guide is for an AI assistant helping someone install this repository's community app on their own Samsung Tizen TV. The app requires Tizen 6.5 or later. Version 2.8.0 was installed and launched on a Samsung QN55Q82BAFXZC. Catalog and playback availability depend on upstream providers.
 
 The assistant needs terminal access on the user's computer. The user operates TV settings and completes Samsung account and certificate dialogs.
 

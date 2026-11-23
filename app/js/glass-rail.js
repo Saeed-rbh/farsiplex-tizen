@@ -42,7 +42,7 @@
    if(k===37){e._fpRailHandled=true;e.preventDefault();e.stopImmediatePropagation();return;}
   }
   // Match 30nama: a held key must not unexpectedly reopen a just-closed rail.
-  if(!opened&&e.repeat&&k===37){var current=document.activeElement,row=current.closest('.home-row,.related-row,.poster-row'),atEdge=row?row.querySelector('button')===current:current.dataset&&current.dataset.grid?Number(current.dataset.index||0)%(current.closest('.episode-grid')?4:6)===0:current===document.querySelector('.home-hero button,.discover-hero button');if(atEdge){e._fpRailHandled=true;e.preventDefault();e.stopImmediatePropagation();return;}}
+  if(!opened&&e.repeat&&k===37){var current=document.activeElement,row=current.closest('.home-row,.related-row,.poster-row'),atEdge=row?row.querySelector('button')===current:current.dataset&&current.dataset.grid?Number(current.dataset.index||0)%(current.closest('.episode-grid')?4:7)===0:current===document.querySelector('.home-hero button,.discover-hero button');if(atEdge){e._fpRailHandled=true;e.preventDefault();e.stopImmediatePropagation();return;}}
  }
  document.addEventListener('keydown',handleKey,true);
  scrim.onclick=function(){close(true);};

@@ -195,3 +195,98 @@ body.detail-screen #scrim {
 @media(prefers-reduced-motion:reduce) {
   .loader-rail > span { animation: none !important; width: 100%; opacity: .65; }
 }
+
+/* 30nama card motion: compositor travel, independent focus and shadow fades. */
+.home-row, .related-row { display: block; padding-top: 26px; }
+.scroll-track { display: flex; align-items: flex-start; width: max-content; gap: inherit; transform: translateX(0); }
+.tile { z-index: 0; }
+.tile.focus { z-index: 2; }
+.poster { border-radius: 18px; border-color: var(--line); box-shadow: none; transform: scale(1); transform-origin: center center; transition: transform var(--d-focus) var(--e-out); }
+.poster::before { content: ''; position: absolute; left: 0; right: 0; top: 0; bottom: 0; border-radius: inherit; box-shadow: 0 22px 44px rgba(0,0,0,.48); opacity: 0; pointer-events: none; transition: opacity var(--d-focus) var(--e-out); }
+.poster::after { left: -5px; right: -5px; top: -5px; bottom: -5px; border: 3px solid var(--focus); border-radius: 23px; transition: opacity var(--d-focus) var(--e-out); }
+.tile::after { display: none; }
+.tile.focus .poster { transform: scale(1.055); box-shadow: none; }
+.tile.focus .poster::before, .tile.focus .poster::after { opacity: 1; }
+.home-row .tile.focus .poster, .related-row .tile.focus .poster { transform: scale(1.08); }
+.home-row .tile:first-child .poster { transform-origin: center center; }
+.home-row .tile, .related-row .tile { height: 366px; }
+.home-row .caption, .related-row .caption { top: 327px; height: 32px; line-height: 32px; font-size: 24px; color: var(--text-2); transition: opacity var(--d-focus) var(--e-out); }
+.tile.focus .caption { color: var(--text-1); }
+.home-row .continue-tile { height: 294px; }
+.home-row .continue-tile .caption { top: 251px; }
+.home-row .continue-tile .subcaption {
+  left: 0; right: 0; top: 165px; height: 60px; max-width: none; padding: 22px 16px 18px;
+  border-radius: 0 0 18px 18px; background: linear-gradient(to top,rgba(8,12,19,.94),rgba(8,12,19,.42) 60%,transparent);
+  color: var(--text-1); font-size: 19px; line-height: 24px;
+}
+.home-row .continue-tile .watch-progress { left: 14px; right: 14px; bottom: 10px; height: 4px; border-radius: 3px; overflow: hidden; }
+.home-row .continue-tile .watch-progress > span { background: var(--focus); border-radius: 3px; }
+.home-section[data-home-group=episodes] .tile { height: 264px; }
+.home-section[data-home-group=episodes] .caption { top: 205px; }
+.home-section[data-home-group=episodes] .subcaption { top: 239px; }
+.grid .caption { top: 353px; }
+.grid .subcaption { top: 384px; }
+.grid.episode-grid .caption { top: 213px; }
+.grid.episode-grid .subcaption { top: 246px; }
+.resume-grid .caption { top: 226px; }
+body.fast { --d-focus: 85ms; }
+@media(prefers-reduced-motion:reduce) {
+  .poster, .tile.focus .poster, .home-row .tile.focus .poster, .related-row .tile.focus .poster { transform: none !important; }
+  .scroll-track { transform: translateX(0) !important; }
+  .poster::before, .poster::after, .caption { transition: none !important; }
+}
+
+/* Align headings and artwork to 30nama's 184 px content anchor. */
+#view { left: -28px; width: 1696px; }
+.grid-scroll, .details { width: 1696px; }
+.grid-scroll:not(.home-scroll), .details { padding: 26px 28px 30px; }
+.home-scroll { padding: 0 0 24px; }
+.home-row, .related-row { width: 100%; }
+.home-row { gap: 32px; }
+.related-row { padding-left: 0; padding-right: 0; gap: 32px; }
+.home-row-title { font-size: 30px; font-weight: 600; }
+.grid:not(.episode-grid):not(.resume-grid) { grid-template-columns: repeat(7,200px); column-gap: 40px; row-gap: 0; justify-content: start; }
+.grid:not(.episode-grid):not(.resume-grid) > .tile { width: 200px; height: 386px; }
+.grid:not(.episode-grid):not(.resume-grid) .poster { width: 200px; height: 300px; }
+.grid:not(.episode-grid):not(.resume-grid) .caption { top: 326px; height: 32px; line-height: 32px; font-size: 26px; }
+.grid:not(.episode-grid):not(.resume-grid) .subcaption { top: 358px; font-size: 20px; line-height: 26px; }
+.grid.episode-grid, .grid.resume-grid { grid-template-columns: repeat(4,380px); column-gap: 40px; row-gap: 30px; justify-content: start; }
+.grid.episode-grid .tile, .grid.resume-grid .tile { width: 380px; height: 294px; }
+.grid.episode-grid .poster, .grid.resume-grid .poster { width: 380px; height: 213.75px; }
+.grid.episode-grid .caption, .grid.resume-grid .caption { top: 239px; height: 32px; line-height: 32px; font-size: 25px; }
+.grid.episode-grid .subcaption { top: 272px; }
+.grid.resume-grid .tile .subcaption { top: 172px; }
+
+@font-face { font-family: Vz; src: url(../fonts/Vazirmatn-Bold.woff2) format('woff2'); font-weight: 700; font-display: block; }
+html, body { font-family: Vz, sans-serif; letter-spacing: 0; }
+#heading { font-size: 56px; line-height: 72px; font-weight: 700; letter-spacing: -.7px; }
+.home-row-title, .episode-heading { font-size: 32px; line-height: 44px; font-weight: 700; letter-spacing: 0; }
+.caption, .home-row .caption, .related-row .caption { font-size: 26px; font-weight: 500; letter-spacing: 0; }
+.action, .choice, .season-tab, #tools button, #player-controls button { font-weight: 500; }
+.action:first-child, #player-title { font-weight: 700; }
+.detail-copy h3, .details .detail-copy h3 { font-weight: 700; letter-spacing: -.5px; }
+.detail-meta, .plot { font-size: 26px; color: var(--text-2); }
+.subcaption, .cast-line, .episode-meta { color: var(--text-3); }
+#rail.fp-rail .fp-rail-label { font-size: 28px; font-weight: 500; }
+.related-row { margin-left: -28px; width: calc(100% + 56px); padding-left: 28px; padding-right: 28px; }
+.home-row .continue-tile .subcaption { padding-top: 14px; padding-bottom: 26px; transform-origin: center -52.5px; transition: transform var(--d-focus) var(--e-out); }
+.home-row .continue-tile.focus .subcaption { transform: scale(1.08); }
+@media(prefers-reduced-motion:reduce) {
+  .home-row .continue-tile .subcaption { transform: none !important; transition: none !important; }
+}
+
+/* Rounded focus edges also render correctly on Chromium 85. */
+:root { --page: var(--d-page); --move: var(--d-move); --emph: var(--e-emph); }
+.action.focus, .secondary.focus, .choice.focus, .season-tab.focus, .key.focus,
+#tools button.focus, .load-more.focus, #player-controls button.focus, #player-options button.focus {
+  outline: none !important;
+  box-shadow: var(--action-focus-edge), 0 0 0 3px var(--focus), 0 8px 24px rgba(0,0,0,.22);
+}
+.details .actions > .action:first-child.focus { box-shadow: 0 0 0 3px var(--focus), 0 0 0 6px var(--bg-0); }
+.episode.focus { outline: none !important; box-shadow: 0 0 0 3px var(--focus), 0 8px 24px rgba(0,0,0,.22); }
+.details .detail-top { padding-left: 0; padding-right: 0; }
+
+.poster img { transition: opacity 240ms var(--e-out); }
+.poster img.art-pending { opacity: 0; }
+.poster img.art-ready { opacity: 1; }
+@media(prefers-reduced-motion:reduce) { .poster img { transition: none !important; } }

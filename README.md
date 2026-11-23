@@ -2,11 +2,15 @@
 
 An unofficial community app for browsing FarsiPlex on Samsung Smart TVs running Tizen 6.5 or later. Browse movies and series with the remote, search the catalog, follow shows, and resume playback. Catalog and playback availability depend on the upstream services.
 
-## Version 2.7.1
+## Version 2.8.0
 
-Version 2.7.1 registers the minimal Samsung Home icon through a versioned launcher asset. Version 2.7.0 introduced the interface update, which uses shared blue gradient surfaces, compact popups, floating player controls, a selected-quality indicator, and a minimal logo without lettering. Exit confirmation focuses Cancel first. The release passed 23 browser regression programs on Chromium 85 and 13 production-screen checks, and was installed and launched on a Samsung QN55Q82BAFXZC. Browser playback checks use simulated Samsung APIs; installation and launch confirmation on the TV are recorded separately.
+Cards, typography, spacing and animations now share 30nama's design structure in FarsiPlex blue. Home uses 200×300 portrait posters, generous focus clearance and aligned text. Catalogs use seven columns with matching portrait proportions. Landscape cards have inset progress bars and gradient captions.
 
-[Download the release](https://github.com/Saeed-rbh/farsiplex-tizen/releases/tag/v2.7.1). The signed widget's acceptance on another TV depends on certificate authorization. The source-install steps below let you build with your own Samsung TV certificate.
+The app uses Vazirmatn with distinct heading, label and metadata weights. Rounded focus rings work on the TV's older Chromium engine. Carousels animate as a single strip and continue from their current visual position when navigation reverses. Artwork fades in, and reduced motion uses immediate navigation.
+
+Version 2.8.0 passed all 24 browser regression programs on Chromium 85 and 13 production-screen checks. It was installed and launched successfully on a Samsung QN55Q82BAFXZC. Physical TV animation smoothness and playback were not measured by these checks.
+
+[Download the release](https://github.com/Saeed-rbh/farsiplex-tizen/releases/tag/v2.8.0). The signed widget's acceptance on another TV depends on certificate authorization. Follow the source-install steps below to build with your own Samsung TV certificate.
 
 ## Ask your AI assistant to install it
 

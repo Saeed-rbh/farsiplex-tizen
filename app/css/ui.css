@@ -65,8 +65,8 @@ body.playing .fp-rail-scrim{display:none}
 body.fast{--focus-time:90ms;--move:140ms}
 .action,.season-tab,#tools button{transition:transform var(--focus-time) var(--ease)}
 .action.focus,.season-tab.focus,#tools button.focus{transform:scale(1.035)}
-.select-feedback{animation:reference-select 170ms var(--ease) both}
-@keyframes reference-select{0%{transform:scale(1.035)}45%{transform:scale(.985)}100%{transform:scale(1.035)}}
+.select-feedback{animation:reference-select 150ms var(--ease) both}
+@keyframes reference-select{0%,100%{opacity:1}35%{opacity:.76}}
 .loading-grid,.pagination-loading{animation:reference-pulse 1.2s ease-in-out infinite alternate}
 .loading-card{background:#20242f;opacity:1}
 @keyframes reference-pulse{from{opacity:.5}to{opacity:.85}}
