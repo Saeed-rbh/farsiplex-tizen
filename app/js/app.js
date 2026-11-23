@@ -156,7 +156,41 @@
     $('view').appendChild(d);d.scrollTop=s.scroll||0;focus(d.querySelectorAll('button')[s.buttonIndex||0]||d.querySelector('button'));
   }
   function detail(post,add,autoWatch) { if(window.FPWork)FPWork.urgent(post); if(kind(post)==='Episode'){openEpisode(post);return;}if(add)push();var my=resetView(pageTitle(post));screen={kind:'loading',post:post,title:post.title};loading('Loading details…');FP.detail(post).then(function(p){if(my===sequence){renderDetail({kind:'detail',post:p});if(autoWatch&&p.watch){var progress=WatchHistory.get(p.url);chooseSources(p,progress?progress.position:0);}else if(autoWatch&&p.episodes.length){var start=seriesStart(p);if(start.episode)openEpisode(start.episode);}}}).catch(function(e){if(my===sequence)error(e.message,function(){detail(post,false,autoWatch);});}); }
-  function modal(title,message,choices,onClose,cancelLabel) { cancelNext();loaded(); modalMemory=cur;$('modal').innerHTML='';$('modal').classList.remove('hidden');var quality=title==='Choose video quality',box=el('div','modal-box'+(quality?' quality-modal':''));if(quality)box.appendChild(el('div','quality-eyebrow','Picture quality'));box.appendChild(el('h3','',title));if(message)box.appendChild(el('p','',message));choices.forEach(function(c){var b=button(c.label,c.fn,'choice');if(title==='Choose source')b.setAttribute('aria-label',c.label);if(c.current)b.dataset.currentProvider='true';if(quality&&c.quality)TVUI.qualityContent(b,{label:c.label,sub:c.sub});else if(c.sub)b.appendChild(el('small','',c.sub));box.appendChild(b);});box.appendChild(button(cancelLabel||'Cancel',closeModal,'choice secondary modal-cancel'));$('modal').appendChild(box);modalBack=onClose||null;focus(box.querySelector('button')); }
+  function modal(title,message,choices,onClose,cancelLabel) {
+    cancelNext();
+    loaded();
+    modalMemory=cur;
+    var dialog=$('modal');
+    dialog.innerHTML='';
+    dialog.classList.remove('hidden');
+    var quality=title==='Choose video quality';
+    var exit=title==='Close FarsiPlex?';
+    var box=el('div','modal-box'+(quality?' quality-modal':'')+(exit?' exit-confirm':''));
+    box.setAttribute('role','dialog');
+    box.setAttribute('aria-modal','true');
+    box.setAttribute('aria-labelledby','dialog-title');
+    if(quality)box.appendChild(el('div','quality-eyebrow','Picture quality'));
+    var heading=el('h3','',title);
+    heading.id='dialog-title';
+    box.appendChild(heading);
+    if(message)box.appendChild(el('p','',message));
+    var actions=exit?el('div','modal-actions'):box;
+    var cancel=button(cancelLabel||'Cancel',function(){closeModal();},'choice secondary modal-cancel');
+    if(exit)actions.appendChild(cancel);
+    choices.forEach(function(c){
+      var b=button(c.label,c.fn,'choice');
+      if(title==='Choose source')b.setAttribute('aria-label',c.label);
+      if(c.current)b.dataset.currentProvider='true';
+      if(quality&&c.quality)TVUI.qualityContent(b,{label:c.label,sub:c.sub});
+      else if(c.sub)b.appendChild(el('small','',c.sub));
+      actions.appendChild(b);
+    });
+    if(exit)box.appendChild(actions);
+    else box.appendChild(cancel);
+    dialog.appendChild(box);
+    modalBack=onClose||null;
+    focus(box.querySelector('button'));
+  }
   function closeModal(silent) { if(window.TVGlass)TVGlass.exit($('modal'),false);providerRequest++;loaded();cancelNext(); $('modal').classList.add('hidden');$('modal').innerHTML='';var fn=modalBack;modalBack=null;if(modalMemory&&document.body.contains(modalMemory))focus(modalMemory);modalMemory=null;if(fn&&silent!==true)fn(); }
   function providerModal(p,select,cancel){var my=sequence,pending=false,request;modal('Choose source',p.title,['FarsiPlex','Farsiland'].map(function(label){return{label:label,current:TitleProviders.label(p)===label,sub:TitleProviders.label(p)===label?'Current source':'Find this title on '+label,fn:function(){if(pending)return;pending=true;var status=$('modal').querySelector('p');if(status)status.textContent='Checking '+label+'…';if(window.FPDiagnostics)FPDiagnostics('provider-check',{provider:label});loading('Checking '+label+'…');TitleProviders.select(p,label).then(function(target){if(request!==providerRequest||my!==sequence)return;loaded();closeModal(true);select(target);},function(e){if(request!==providerRequest||my!==sequence)return;loaded();pending=false;var status=$('modal').querySelector('p');if(status)status.textContent=e.message;if(window.FPDiagnostics)FPDiagnostics('provider-failed',{provider:label,status:e.status||0,reason:/verified/.test(e.message)?'no-match':/reach/.test(e.message)?'network':'other'});});}};}),cancel||null,'Back');request=++providerRequest;}
   function resolvePlayable(sources,source,valid){var ordered=[source].concat(sources.filter(function(s){return s!==source&&s.label===source.label;}),sources.filter(function(s){return s.label!==source.label;})),i=0;

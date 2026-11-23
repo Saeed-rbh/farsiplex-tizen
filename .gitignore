@@ -6,3 +6,8 @@ test-*/
 *.p12
 *.pfx
 *.pem
+*.key
+.env
+.env.*
+author-signature.xml
+signature*.xml

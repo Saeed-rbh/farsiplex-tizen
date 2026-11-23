@@ -1,1 +1,13 @@
-{"name":"farsiplex-tizen-community","version":"2.6.2","private":true,"description":"Unofficial FarsiPlex TV interface for Tizen 6.5","scripts":{"test":"node tests/tv-ui.cjs && node tests/resume.cjs && node tests/series-dates.cjs && node tests/catalogue-sorting.cjs && node tests/next-watched.cjs && node tests/farsiland.cjs && node tests/episode-entry.cjs && node tests/date-consistency.cjs && node tests/balanced-dates.cjs && node tests/header-loader.cjs && node tests/startup-batch.cjs && node tests/orphan-episodes.cjs && node tests/moved-pages.cjs && node tests/missing-series.cjs && node tests/repaired-resume.cjs && node tests/episode-picker.cjs && node tests/autoplay.cjs && node tests/tv-refresh.cjs && node tests/player-quality.cjs && node tests/experience.cjs && node tests/player-route.cjs && node tests/farsiland-current.cjs && node tests/providers.cjs"},"devDependencies":{"playwright":"1.62.1"},"license":"MIT"}
+{
+  "name": "farsiplex-tizen-community",
+  "version": "2.7.0",
+  "private": true,
+  "description": "Unofficial FarsiPlex TV interface for Tizen 6.5",
+  "scripts": {
+    "test": "node tests/tv-ui.cjs && node tests/resume.cjs && node tests/series-dates.cjs && node tests/catalogue-sorting.cjs && node tests/next-watched.cjs && node tests/farsiland.cjs && node tests/episode-entry.cjs && node tests/date-consistency.cjs && node tests/balanced-dates.cjs && node tests/header-loader.cjs && node tests/startup-batch.cjs && node tests/orphan-episodes.cjs && node tests/moved-pages.cjs && node tests/missing-series.cjs && node tests/repaired-resume.cjs && node tests/episode-picker.cjs && node tests/autoplay.cjs && node tests/tv-refresh.cjs && node tests/player-quality.cjs && node tests/experience.cjs && node tests/player-route.cjs && node tests/farsiland-current.cjs && node tests/providers.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  },
+  "license": "MIT"
+}

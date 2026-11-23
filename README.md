@@ -2,6 +2,20 @@
 
 An unofficial community app for browsing FarsiPlex on Samsung Smart TVs running Tizen 6.5 or later. Browse movies and series with the remote, search the catalog, follow shows, and resume playback. Catalog and playback availability depend on the upstream services.
 
+## Version 2.7.0
+
+The updated interface uses shared blue gradient surfaces, compact popups, floating player controls, a selected-quality indicator, and a minimal logo without lettering. Exit confirmation focuses Cancel first. The release passed 23 browser regression programs on Chromium 85 and 13 production-screen checks, and was installed and launched on a Samsung QN55Q82BAFXZC. Browser playback checks use simulated Samsung APIs; installation and launch confirmation on the TV are recorded separately.
+
+[Download the release](https://github.com/Saeed-rbh/farsiplex-tizen/releases/tag/v2.7.0). The signed widget's acceptance on another TV depends on certificate authorization. The source-install steps below let you build with your own Samsung TV certificate.
+
+## Ask your AI assistant to install it
+
+Give an AI assistant with terminal access this prompt.
+
+> Install FarsiPlex from https://github.com/Saeed-rbh/farsiplex-tizen on my Samsung TV. Read AI_INSTALL.md, inspect my Tizen Studio setup and signing profiles, guide me through Developer Mode, then build, install and launch the app. Use my actual network addresses and preserve viewing history during updates.
+
+The [AI installation guide](AI_INSTALL.md) explains the terminal steps the assistant can perform, the TV and sign-in steps that need the user, certificate requirements, and connection recovery.
+
 ## Install it on your TV
 
 ### 1. Set up Tizen Studio
@@ -53,6 +67,19 @@ tizen run -p FarsiPlex1.FarsiPlex -t TV_TARGET
 - **The TV is missing from Device Manager.** Confirm the TV and computer are on the same network, Developer Mode has your computer's IP address, and the TV has restarted. Recheck the TV's current IP address.
 - **The TV rejects the package.** Confirm you signed with a Samsung TV profile that includes this TV's DUID. In Device Manager, right-click the connected TV and select **Permit to install applications** if that option appears. Rebuild the widget after changing certificates.
 - **An existing install rejects the update.** Updates need the same author certificate as the previous installation. Reuse that certificate if you want to preserve viewing history and favorites. Uninstalling the app can erase that data.
+
+## Remote controls
+
+| Control | Action |
+|---|---|
+| Arrows and OK | Browse and open focused items |
+| Return / Back | Close a popup, return to the previous screen, or open exit confirmation |
+| Play/Pause while browsing | Open or close the navigation menu |
+| OK or Play/Pause during playback | Toggle playback |
+| Left / Right during playback | Seek 10 seconds |
+| Up during episode playback | Open the episode picker |
+| Down during playback | Focus playback controls |
+| Stop | Close playback and return to browsing |
 
 ## Run the browser regression tests
 
